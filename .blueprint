@@ -1,0 +1,35 @@
+created:
+    - app/Http/Controllers/Api/UserController.php
+    - app/Http/Controllers/Api/PostController.php
+    - app/Http/Controllers/Api/CategoryController.php
+    - database/factories/UserFactory.php
+    - database/factories/PostFactory.php
+    - database/factories/CategoryFactory.php
+    - database/migrations/2024_03_07_130329_create_users_table.php
+    - database/migrations/2024_03_07_130330_create_posts_table.php
+    - database/migrations/2024_03_07_130331_create_categories_table.php
+    - database/migrations/2024_03_07_130332_create_category_post_table.php
+    - app/Models/User.php
+    - app/Models/Post.php
+    - app/Models/Category.php
+    - tests/Feature/Http/Controllers/Api/UserControllerTest.php
+    - tests/Feature/Http/Controllers/Api/PostControllerTest.php
+    - tests/Feature/Http/Controllers/Api/CategoryControllerTest.php
+    - app/Http/Requests/Api/UserStoreRequest.php
+    - app/Http/Requests/Api/UserUpdateRequest.php
+    - app/Http/Requests/Api/PostStoreRequest.php
+    - app/Http/Requests/Api/PostUpdateRequest.php
+    - app/Http/Requests/Api/CategoryStoreRequest.php
+    - app/Http/Requests/Api/CategoryUpdateRequest.php
+    - app/Http/Resources/Api/UserCollection.php
+    - app/Http/Resources/Api/UserResource.php
+    - app/Http/Resources/Api/PostCollection.php
+    - app/Http/Resources/Api/PostResource.php
+    - app/Http/Resources/Api/CategoryCollection.php
+    - app/Http/Resources/Api/CategoryResource.php
+updated:
+    - routes/api.php
+models:
+    User: { name: string, email: string, email_verified_at: timestamp, password: string, relationships: { hasMany: Post } }
+    Post: { title: string, content: text, user_id: unsignedInteger, relationships: { belongsTo: User, belongsToMany: Category } }
+    Category: { name: string, relationships: { belongsToMany: Post } }

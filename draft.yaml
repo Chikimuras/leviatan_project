@@ -1,0 +1,30 @@
+models:
+  User:
+    name: string
+    email: string
+    email_verified_at: timestamp
+    password: string
+    relationships:
+      hasMany: Post
+  Post:
+    title: string
+    content: text
+    user_id: unsignedInteger
+    relationships:
+      belongsTo: User
+      belongsToMany: Category
+
+  Category:
+    name: string
+    relationships:
+      belongsToMany: Post
+
+controllers:
+  Api/User:
+    resource: api
+
+  Api/Post:
+    resource: api
+
+  Api/Category:
+    resource: api
