@@ -3,12 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class User extends Model
+class User extends Authenticatable implements JWTSubject
 {
     use HasFactory;
+
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -39,10 +42,22 @@ class User extends Model
     protected $casts = [
         'id' => 'integer',
         'email_verified_at' => 'timestamp',
+        'password' => 'hashed',
     ];
 
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
+    }
+
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims(): array
+    {
+        return [];
     }
 }

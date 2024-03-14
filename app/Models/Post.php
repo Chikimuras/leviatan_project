@@ -41,4 +41,9 @@ class Post extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+    public function latestUpdatedFirst()
+    {
+        return $this->orderBy('updated_at', 'desc');
+    }
 }
