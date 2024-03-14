@@ -2,7 +2,7 @@ models:
   User:
     name: string
     email: string
-    email_verified_at: timestamp
+    email_verified_at: timestamp nullable
     password: string
     relationships:
       hasMany: Post
