@@ -9,7 +9,6 @@ cp .env.example .env
 ./vendor/bin/sail artisan migrate
 ./vendor/bin/sail artisan db:seed
 ```
-Vous pouvez maintenant accéder à l'application à l'adresse [http://localhost](http://localhost).
 
 ## Création d'un utilisateur
 Pour créer un utilisateur, il suffit de lancer la commande suivante:
