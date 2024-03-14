@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Post;
@@ -22,9 +23,16 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(4),
-            'content' => $this->faker->paragraphs(3, true),
+            'title' => $this->faker->sentence,
+            'content' => $this->faker->paragraph,
             'user_id' => User::factory(),
         ];
+    }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (Post $post) {
+            $post->categories()->attach(Category::factory()->count(3)->create());
+        });
     }
 }
