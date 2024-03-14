@@ -22,7 +22,7 @@ class UserUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'string'],
             'email' => ['required', 'email'],
-            'email_verified_at' => ['required'],
+            'email_verified_at' => ['nullable'],
             'password' => ['required', 'password'],
         ];
     }

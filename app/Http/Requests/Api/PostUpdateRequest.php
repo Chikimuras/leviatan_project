@@ -22,7 +22,7 @@ class PostUpdateRequest extends FormRequest
         return [
             'title' => ['required', 'string'],
             'content' => ['required', 'string'],
-            'user_id' => ['required', 'integer', 'exists:Users,id'],
+            'user_id' => ['required', 'integer', 'exists:users,id'],
         ];
     }
 }
